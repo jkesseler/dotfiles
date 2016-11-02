@@ -1,0 +1,110 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true,
+    "mocha": true
+  },
+  "extends": "airbnb",
+  "parser": "babel-eslint",
+  "rules": {
+    "comma-dangle": ["error", "never"],
+    "max-len": ["error", 140],
+
+    // Disallow arrow function when they can easily be confused with comparison operators
+    // http://eslint.org/docs/rules/no-confusing-arrow
+    "no-confusing-arrow": ["warn", { "allowParens": true }],
+
+    "no-use-before-define": ["error", "nofunc"],
+
+    // Require arrow function body to be wrappen with parens
+    // http://eslint.org/docs/rules/arrow-body-style
+    "arrow-body-style": ["off", "always"],
+
+    // Reports use of an exported name as the locally imported name of a default export.
+    "import/no-named-as-default": ["warn"],
+
+
+    // Forbid the import of external modules that are not declared in dependencies, devDependencies, optionalDependencies or peerDependencies.
+    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-extraneous-dependencies.md
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.test.js", "**/*.spec.js"]}],
+
+    // Restrict file extensions that may be required
+    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/extensions.md
+    "import/extensions": ["off", { "js": "never" }],
+    // Make sure to use the appropiate webpack loaders
+
+    // Prevent missing displayName in a React component definition
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/display-name.md
+    "react/display-name": ["warn", { ignoreTranspilerName: false }],
+
+
+    // Limit maximum of props on a single line in JSX
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-max-props-per-line.md
+    "react/jsx-max-props-per-line": ["error", { maximum: 4 }],
+
+
+    // Enforce event handler naming conventions in JSX
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md
+    "react/jsx-handler-names": ["error", {
+      eventHandlerPrefix: "handle",
+      eventHandlerPropPrefix: "on",
+    }],
+
+    // Enforce propTypes declarations alphabetical sorting
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/sort-prop-types.md
+    "react/sort-prop-types": ["error", {
+      ignoreCase: true,
+      callbacksLast: false,
+      requiredFirst: false,
+    }],
+
+    // Enforce props alphabetical sorting
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-sort-props.md
+    "react/jsx-sort-props": ["error", {
+      ignoreCase: true,
+      callbacksLast: false,
+      shorthandFirst: false,
+      shorthandLast: false,
+    }],
+
+
+    // Prevent direct mutation of this.state
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-direct-mutation-state.md
+    "react/no-direct-mutation-state": 2,
+
+    // Require stateless functions when not using lifecycle methods, setState or ref
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prefer-stateless-function.md
+    "react/prefer-stateless-function": 1,
+
+    // Prevent definitions of unused prop types
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unused-prop-types.md
+    "react/no-unused-prop-types": ["warn", {
+      skipShapeProps: true
+    }],
+
+
+    // Disallow target="_blank" on links
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-target-blank.md
+    "react/jsx-no-target-blank": 0,
+    // This is only a security vulnrability if an external website not under
+    // controll is linked. This usually only happens in user generated content
+
+
+    // only .jsx files may have JSX
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-filename-extension.md
+    "react/jsx-filename-extension": ["error", { extensions: [".js", ".jsx"] }],
+
+    // Forbid certain props on Components
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/forbid-component-props.md
+    "react/forbid-component-props": ["error", { forbid: ["style"] }],
+    // The style property should not be used. Inlyine styles are dircouraged,
+    // use classes instead.
+
+    // Forbid certain propTypes
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/forbid-prop-types.md
+    "react/forbid-prop-types": ["error", { "forbid": ["any", "array", "object"] }],
+    // Proptypes `any()`, `array` and `object` should not be used, instead use
+    // `arrayOf()` and `shape()`. Please see[Proptype validation](https://facebook.github.io/react/docs/reusable-components.html#prop-validation)
+  }
+}
