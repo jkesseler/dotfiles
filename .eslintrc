@@ -1,43 +1,27 @@
 {
-  "env": {
-    "browser": true,
-    "node": true,
-    "jest": true,
-    "mocha": true
-  },
-  "extends": "airbnb",
+  "extends": [
+    "airbnb",
+    "prettier",
+    "prettier/react"
+  ],
   "parser": "babel-eslint",
+  "plugins": [
+    "react"
+  ],
   "rules": {
-    "comma-dangle": ["error", "never"],
-    "max-len": ["error", 140],
+    "comma-dangle": ["error"]
+    "import/named": ["warn"],
+    "import/no-extraneous-dependencies": ["warn", {"devDependencies": [
+      ".storybook/*.js",
+      "**/*.stories.js"
+    ]}],
+    "max-len": [1, 120],
 
     // Disallow arrow function when they can easily be confused with comparison operators
     // http://eslint.org/docs/rules/no-confusing-arrow
     "no-confusing-arrow": ["warn", { "allowParens": true }],
 
-    "no-use-before-define": ["error", "nofunc"],
-
-    // Require arrow function body to be wrappen with parens
-    // http://eslint.org/docs/rules/arrow-body-style
-    "arrow-body-style": ["off", "always"],
-
-    // Reports use of an exported name as the locally imported name of a default export.
-    "import/no-named-as-default": ["warn"],
-
-
-    // Forbid the import of external modules that are not declared in dependencies, devDependencies, optionalDependencies or peerDependencies.
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-extraneous-dependencies.md
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.test.js", "**/*.spec.js"]}],
-
-    // Restrict file extensions that may be required
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/extensions.md
-    "import/extensions": ["off", { "js": "never" }],
-    // Make sure to use the appropiate webpack loaders
-
-    // Prevent missing displayName in a React component definition
-    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/display-name.md
-    "react/display-name": ["warn", { ignoreTranspilerName: false }],
-
+    "object-curly-spacing": ["error"],
 
     // Limit maximum of props on a single line in JSX
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-max-props-per-line.md
@@ -46,7 +30,7 @@
 
     // Enforce event handler naming conventions in JSX
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md
-    "react/jsx-handler-names": ["error", {
+    "react/jsx-handler-names": ["warn", {
       eventHandlerPrefix: "handle",
       eventHandlerPropPrefix: "on",
     }],
@@ -68,14 +52,9 @@
       shorthandLast: false,
     }],
 
-
-    // Prevent direct mutation of this.state
-    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-direct-mutation-state.md
-    "react/no-direct-mutation-state": 2,
-
     // Require stateless functions when not using lifecycle methods, setState or ref
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prefer-stateless-function.md
-    "react/prefer-stateless-function": 1,
+    "react/prefer-stateless-function": ["warn"],
 
     // Prevent definitions of unused prop types
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unused-prop-types.md
@@ -86,7 +65,7 @@
 
     // Disallow target="_blank" on links
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-target-blank.md
-    "react/jsx-no-target-blank": 0,
+    "react/jsx-no-target-blank": ["warn"],
     // This is only a security vulnrability if an external website not under
     // controll is linked. This usually only happens in user generated content
 
@@ -106,5 +85,18 @@
     "react/forbid-prop-types": ["error", { "forbid": ["any", "array", "object"] }],
     // Proptypes `any()`, `array` and `object` should not be used, instead use
     // `arrayOf()` and `shape()`. Please see[Proptype validation](https://facebook.github.io/react/docs/reusable-components.html#prop-validation)
+  }
+  },
+  "env": {
+    "es6": true,
+    "node": true,
+    "browser": true,
+    "mocha": true,
+    "jasmine": true
+  },
+  "globals": {
+    "document": false,
+    "expect": false,
+    "jest": false
   }
 }
