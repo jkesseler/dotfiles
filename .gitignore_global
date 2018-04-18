@@ -8,6 +8,7 @@ launch.json
 node_modules/
 npm-debug.log
 .env
+.sass-cache/
 
 # Node
 npm-debug.log
