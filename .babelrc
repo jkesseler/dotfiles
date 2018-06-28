@@ -1,13 +1,17 @@
 {
-  "presets": [
-    "es2015",
-    "react",
-    "stage-1"
-  ],
-
-  "plugins": [
-    "add-module-exports",
-    "transform-flow-strip-types",
-    "transform-object-rest-spread"
-  ]
+    "presets": [
+        [ "env", {
+            "targets": {
+                "browsers": [
+                  ">1%",
+                  "not op_mini"
+                ]
+            }
+        }],
+        "react"
+    ],
+    "plugins": [
+        "transform-class-properties",
+        "transform-object-rest-spread"
+    ]
 }
